@@ -2,48 +2,23 @@ package org.example;
 
 
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
+import java.util.stream.Collectors;
 import java.util.List;
+import java.util.Arrays;
 
 class Solution {
+    public String solution(String my_string) {
+        List<String> my_words = Arrays.asList(my_string.split(""));
 
-    public int solution(int[] sides) {
-        int max = 0;
-        int sum = 0;
-        // 최댓값 구하기
-        for (int i = 0; i < sides.length; i++) {
-            if (max < sides[i]) {
-                max = sides[i];
-            }
-        }
-        // 나머지 값 합치기
-        for (int i = 0; i < sides.length; i++) {
-            if (max == sides[i]) {
-                sides[i] = 0;
-                break;
-            }
-        }
-
-        for (int i = 0; i < sides.length; i++) {
-            sum += sides[i];
-        }
-
-        // 두 값 비교
-        if (sum > max) {
-            return 1;
-        }
-
-        return 2;
+        return String.join("",  my_words.stream().distinct().collect(Collectors.toList()));
     }
-
 }
-
 
 public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(new int[]{1, 2, 3}));
+        System.out.println(solution.solution("people"));
     }
 }
