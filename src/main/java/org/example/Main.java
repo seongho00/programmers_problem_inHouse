@@ -2,16 +2,18 @@ package org.example;
 
 
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.stream.Collectors;
 import java.util.List;
-import java.util.Arrays;
 
 class Solution {
-    public String solution(String my_string) {
-        List<String> my_words = Arrays.asList(my_string.split(""));
-
-        return String.join("",  my_words.stream().distinct().collect(Collectors.toList()));
+    public List<String> solution(String my_str, int n) {
+        List<String> list = new ArrayList<>();
+        for (int i = 0; i < my_str.length() / n; i++) {
+            list.add(my_str.substring(i * n, i * n + n));
+        }
+        if (my_str.length() % n != 0) {
+            list.add(my_str.substring(my_str.length() / n * n, my_str.length()));
+        }
+        return list;
     }
 }
 
@@ -19,6 +21,6 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution("people"));
+        System.out.println(solution.solution("abcdef123", 3));
     }
 }
