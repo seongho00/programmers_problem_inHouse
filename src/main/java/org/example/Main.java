@@ -5,15 +5,25 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Solution {
-    public List<String> solution(String my_str, int n) {
-        List<String> list = new ArrayList<>();
-        for (int i = 0; i < my_str.length() / n; i++) {
-            list.add(my_str.substring(i * n, i * n + n));
+    public int solution(int[] sides) {
+        int count = 0;
+        int max = Math.max(sides[0], sides[1]);
+        int min = Math.min(sides[0], sides[1]);
+
+        int diff = max - min;
+        int sum = max + min;
+
+
+        while (diff != max) {
+            diff++;
+            count++;
         }
-        if (my_str.length() % n != 0) {
-            list.add(my_str.substring(my_str.length() / n * n, my_str.length()));
+
+        while (max + 1 != sum) {
+            count++;
+            max++;
         }
-        return list;
+        return count;
     }
 }
 
@@ -21,6 +31,6 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution("abcdef123", 3));
+        System.out.println(solution.solution(new int[]{11, 7}));
     }
 }
