@@ -1,29 +1,35 @@
 package org.example;
 
 
+import java.sql.SQLOutput;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 class Solution {
-    public int solution(int[] sides) {
-        int count = 0;
-        int max = Math.max(sides[0], sides[1]);
-        int min = Math.min(sides[0], sides[1]);
+    public int solution(String my_string) {
+        int answer = 0;
+        my_string = my_string.toLowerCase();
+        List<String> words = new ArrayList<>();
+        for (int i = 0; i < 26; i++) {
+            words.add(String.valueOf((char) (i + 97)));
+        }
+        for (int i = 0; i < words.size(); i++) {
+            my_string = my_string.replaceAll(words.get(i), " ");
+        }
+        List<String> numbers = Arrays.asList(my_string.split(" "));
 
-        int diff = max - min;
-        int sum = max + min;
+        for (int i = 0; i < numbers.size(); i++) {
+            try {
+                answer += Integer.parseInt(numbers.get(i));
 
-
-        while (diff != max) {
-            diff++;
-            count++;
+            } catch (Exception e) {
+                
+            }
         }
 
-        while (max + 1 != sum) {
-            count++;
-            max++;
-        }
-        return count;
+
+        return answer;
     }
 }
 
@@ -31,6 +37,6 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(new int[]{11, 7}));
+        System.out.println(solution.solution("aAb1B2cC34oOp"));
     }
 }
