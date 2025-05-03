@@ -8,32 +8,38 @@ import java.util.List;
 
 
 class Solution {
-    public int solution(String[] spell, String[] dic) {
-        for (int i = 0; i < dic.length; i++) {
-            for (int j = 0; j < spell.length; j++) {
-                dic[i] = dic[i].replaceAll(spell[j], String.valueOf(j));
-            }
-            int answer = 0;
-
-            for (int j = 0; j < spell.length; j++) {
-                if (dic[i].contains(String.valueOf(j))) {
-                    answer++;
-                }
-
-                if (answer == spell.length) {
-                    return 1;
-                }
+    public int solution(int a, int b) {
+        int answer = 0;
+        for (int i = 2; i <= a; i++) {
+            if (b % i == 0 && a % i == 0) {
+                a /= i;
+                b /= i;
+                i--;
             }
         }
-        return 2;
+
+        for (int i = 2; i <= b; i++) {
+            if (b % 2 == 0) {
+                b /= 2;
+                i--;
+            }
+            if (b % 5 == 0) {
+                b /= 5;
+                i--;
+            }
+        }
+        if (b != 1) {
+            return 2;
+        }
+
+        return 1;
     }
 }
-
 
 public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(new String[]{"s", "o", "m", "d"}, new String[]{"moos", "dzx", "smm", "sunmmo", "som"}));
+        System.out.println(solution.solution(12, 21));
     }
 }
