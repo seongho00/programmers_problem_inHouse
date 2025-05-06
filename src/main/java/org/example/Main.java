@@ -2,37 +2,37 @@ package org.example;
 
 
 import java.sql.SQLOutput;
-import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
-
 class Solution {
-    public int solution(int a, int b) {
-        int answer = 0;
-        for (int i = 2; i <= a; i++) {
-            if (b % i == 0 && a % i == 0) {
-                a /= i;
-                b /= i;
-                i--;
+    public List<Integer> solution(int[][] score) {
+        List<Double> AVG_sort = new ArrayList<>();
+        List<Integer> answer = new ArrayList<>();
+        for (int i = 0; i < score.length; i++) {
+            int scoreSum = 0;
+
+            for (int j = 0; j < score[i].length; j++) {
+                scoreSum += score[i][j];
+            }
+            AVG_sort.add((double) scoreSum / (double) score[0].length);
+        }
+
+        List<Double> AVG = new ArrayList<>(AVG_sort);
+        Collections.sort(AVG_sort, Collections.reverseOrder());
+        for (Double avg : AVG) {
+            int avg_int = (int) (avg * 10);
+            for (int j = 0; j < AVG_sort.size(); j++) {
+                if ((int) (AVG_sort.get(j) * 10) == avg_int) {
+                    answer.add(j + 1);
+                    break;
+                }
             }
         }
 
-        for (int i = 2; i <= b; i++) {
-            if (b % 2 == 0) {
-                b /= 2;
-                i--;
-            }
-            if (b % 5 == 0) {
-                b /= 5;
-                i--;
-            }
-        }
-        if (b != 1) {
-            return 2;
-        }
-
-        return 1;
+        return answer;
     }
 }
 
@@ -40,6 +40,6 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(12, 21));
+        System.out.println(solution.solution(new int[][]{{1, 3}, {3, 1}, {2, 3}, {3, 2}, {1, 2}, {1, 1}}));
     }
 }
