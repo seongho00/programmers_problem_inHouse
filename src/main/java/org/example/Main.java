@@ -8,23 +8,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Solution {
-    public List<Integer> solution(int num, int total) {
-        List<Integer> answer = new ArrayList<>();
-        if (total % num == 0) {
-            for (int i = 0; i < num; i++) {
-
-                int number = i - num / 2;
-                answer.add(total / num + number);
-
-            }
+    public int solution(int[] common) {
+        if (common[0] - common[1] == common[1] - common[2]) {
+            int diff = common[1] - common[0];
+            return common[common.length - 1] + diff;
         } else {
-            for (int i = 0; i < num; i++) {
-                int number = i - num / 2 + 1;
-                answer.add(total / num + number);
-            }
-        }
+            int diff = common[1] / common[0];
+            return common[common.length - 1] * diff;
 
-        return answer;
+        }
     }
 }
 
@@ -32,6 +24,6 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(4, 14));
+        System.out.println(solution.solution(new int[]{2, 4, 8}));
     }
 }
