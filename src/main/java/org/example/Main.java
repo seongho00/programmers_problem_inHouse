@@ -8,11 +8,19 @@ import java.util.Collections;
 import java.util.List;
 
 class Solution {
-    public String solution(String bin1, String bin2) {
-
-        int bin1_10 = Integer.parseInt(bin1, 2);
-        int bin2_10 = Integer.parseInt(bin2, 2);
-        return Integer.toBinaryString(bin1_10 + bin2_10);
+    public int solution(String before, String after) {
+        for (char before_c : before.toCharArray()) {
+            for (int j = 0; j < after.length(); j++) {
+                if (before_c == after.charAt(j)) {
+                    after = after.substring(0, j) + after.substring(j + 1);
+                    break;
+                }
+            }
+        }
+        if (after.isEmpty()) {
+            return 1;
+        }
+        return 0;
     }
 }
 
@@ -20,6 +28,6 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution("1001", "1111"));
+        System.out.println(solution.solution("olleh", "hello"));
     }
 }
