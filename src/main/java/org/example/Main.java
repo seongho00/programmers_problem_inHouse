@@ -8,11 +8,12 @@ import java.util.Collections;
 import java.util.List;
 
 class Solution {
-    public int solution(String my_string, String is_suffix) {
-        if (my_string.endsWith(is_suffix)) {
-            return 1;
+    public String solution(String[] my_strings, int[][] parts) {
+        String answer = "";
+        for (int i = 0; i < my_strings.length; i++) {
+            answer += my_strings[i].substring(parts[i][0], parts[i][1] + 1);
         }
-        return 0;
+        return answer;
     }
 }
 
@@ -20,6 +21,6 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution("banana", "ana"));
+        System.out.println(solution.solution(new String[]{"progressive", "hamburger", "hammer", "ahocorasick" }, new int[][]{{0, 4}, {1, 2}, {3, 5}, {7, 7}}));
     }
 }
