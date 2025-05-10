@@ -5,14 +5,18 @@ import java.sql.SQLOutput;
 import java.util.*;
 
 class Solution {
-    public String solution(String my_string, int s, int e) {
-        String temp = my_string.substring(s, e + 1);
-        StringBuffer temp_sb = new StringBuffer(temp);
-        String reverse_temp = temp_sb.reverse().toString();
-
-        my_string = my_string.substring(0, s) + reverse_temp + my_string.substring(e + 1);
-
-        return my_string;
+    public String solution(String my_string, int m, int c) {
+        List<String> list = new ArrayList<>();
+        String answer = "";
+        while (!my_string.isEmpty()) {
+            String str = my_string.substring(0, m);
+            list.add(str);
+            my_string = my_string.substring(m);
+        }
+        for (int i = 0; i < list.size(); i++) {
+            answer += list.get(i).charAt(c - 1);
+        }
+        return answer;
     }
 }
 
@@ -20,6 +24,6 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution("Progra21Sremm3", 6, 12));
+        System.out.println(solution.solution("ihrhbakrfpndopljhygc", 4, 2));
     }
 }
