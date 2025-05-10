@@ -8,8 +8,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Solution {
-    public String solution(String my_string, int n) {
-        return my_string.substring(my_string.length() - n);
+    public List<String> solution(String my_string) {
+        List<String> answer = new ArrayList<>();
+        for (int i = my_string.length(); i > 0; i--) {
+            answer.add(my_string.substring(i - 1));
+        }
+        Collections.sort(answer);
+        return answer;
     }
 }
 
@@ -17,6 +22,6 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution("He110W0r1d", 5));
+        System.out.println(solution.solution("banana"));
     }
 }
