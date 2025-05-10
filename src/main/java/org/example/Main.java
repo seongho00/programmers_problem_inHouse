@@ -8,18 +8,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Solution {
-    public int solution(int i, int j, int k) {
-        int answer = 0;
-        for (int index = i; index <= j; index++) {
-            List<String> list = new ArrayList<>(Arrays.asList(String.valueOf(index).split("")));
-            for (int index_j = 0; index_j < list.size(); index_j++) {
-                if (list.get(index_j).equals(String.valueOf(k))) {
-                    answer++;
-                }
-            }
-        }
+    public int solution(int chicken) {
+        return coupon(chicken);
+    }
 
-        return answer;
+    int coupon(int coupon_count) {
+        int coupon_remain_count = coupon_count % 10;
+        int coupon_chicken = coupon_count / 10;
+        if (coupon_remain_count + coupon_chicken >= 10) {
+            return coupon_chicken + coupon(coupon_chicken + coupon_remain_count);
+        }
+        return coupon_chicken;
     }
 }
 
@@ -27,6 +26,6 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(1, 13, 1));
+        System.out.println(solution.solution(100));
     }
 }
