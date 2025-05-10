@@ -8,8 +8,23 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Solution {
-    public int solution(int M, int N) {
-        return M * N - 1;
+    public List<Integer> solution(int num, int total) {
+        List<Integer> answer = new ArrayList<>();
+        if (total % num == 0) {
+            for (int i = 0; i < num; i++) {
+
+                int number = i - num / 2;
+                answer.add(total / num + number);
+
+            }
+        } else {
+            for (int i = 0; i < num; i++) {
+                int number = i - num / 2 + 1;
+                answer.add(total / num + number);
+            }
+        }
+
+        return answer;
     }
 }
 
@@ -17,6 +32,6 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(3, 4));
+        System.out.println(solution.solution(4, 14));
     }
 }
