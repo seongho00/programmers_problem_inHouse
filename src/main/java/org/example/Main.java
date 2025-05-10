@@ -8,15 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 class Solution {
-    public int solution(int[] common) {
-        if (common[0] - common[1] == common[1] - common[2]) {
-            int diff = common[1] - common[0];
-            return common[common.length - 1] + diff;
-        } else {
-            int diff = common[1] / common[0];
-            return common[common.length - 1] * diff;
-
-        }
+    public String solution(String my_string, int n) {
+        return my_string.substring(my_string.length() - n);
     }
 }
 
@@ -24,6 +17,6 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(new int[]{2, 4, 8}));
+        System.out.println(solution.solution("He110W0r1d", 5));
     }
 }
