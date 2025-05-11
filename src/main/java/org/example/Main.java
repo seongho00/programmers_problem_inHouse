@@ -5,11 +5,15 @@ import java.sql.SQLOutput;
 import java.util.*;
 
 class Solution {
-    public List<Integer> solution(int start_num, int end_num) {
-        List<Integer> answer = new ArrayList<>();
-        for (int i = start_num; i >= end_num; i--) {
-            answer.add(i);
+    public int solution(int[] arr, int idx) {
+        int answer = -1;
+        for (int i = idx; i < arr.length; i++) {
+            if (arr[i] == 1) {
+                answer = i;
+                break;
+            }
         }
+
         return answer;
     }
 }
@@ -18,6 +22,6 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(10, 3));
+        System.out.println(solution.solution(new int[]{1, 0, 0, 1, 0, 0}, 4));
     }
 }
