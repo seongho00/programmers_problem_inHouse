@@ -5,13 +5,14 @@ import java.sql.SQLOutput;
 import java.util.*;
 
 class Solution {
-    public int solution(int[] num_list) {
-        for (int i = 0; i < num_list.length; i++) {
-            if (num_list[i] < 0) {
-                return i;
+    public List<Integer> solution(int[] arr, int[][] intervals) {
+        List<Integer> answer = new ArrayList<>();
+        for (int i = 0; i < intervals.length; i++) {
+            for (int j = intervals[i][0]; j <= intervals[i][1]; j++) {
+                answer.add(arr[j]);
             }
         }
-        return -1;
+        return answer;
     }
 }
 
@@ -19,6 +20,6 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(new int[]{12, 4, 15, 46, 38, -2, 15}));
+        System.out.println(solution.solution(new int[]{1, 2, 3, 4, 5}, new int[][]{{1, 3}, {0, 4}}));
     }
 }
