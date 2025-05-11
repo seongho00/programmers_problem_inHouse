@@ -5,13 +5,15 @@ import java.sql.SQLOutput;
 import java.util.*;
 
 class Solution {
-    public String solution(String my_string, int[] indices) {
-        List<String> list = new ArrayList<>(Arrays.asList(my_string.split("")));
+    public List<Integer> solution(int n, int k) {
+        List<Integer> answer = new ArrayList<>();
+        int i = 1;
+        while (k * i <= n && k > 0) {
+            answer.add(k * i);
+            i++;
 
-        for (int i = 0; i < indices.length; i++) {
-            list.set(indices[i], "");
         }
-        return String.join("", list);
+        return answer;
     }
 }
 
@@ -19,6 +21,6 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution("apporoograpemmemprs", new int[]{1, 16, 6, 15, 0, 10, 11, 3}));
+        System.out.println(solution.solution(15, 5));
     }
 }
