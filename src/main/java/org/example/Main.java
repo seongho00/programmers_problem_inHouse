@@ -5,21 +5,31 @@ import java.sql.SQLOutput;
 import java.util.*;
 
 class Solution {
-    public List<Integer> solution(String my_string) {
+    public List<Integer> solution(int n, int[] slicer, int[] num_list) {
         List<Integer> answer = new ArrayList<>();
-        for (int i = 0; i < 52; i++) {
-            answer.add(0);
-        }
-        for (int i = 0; i < my_string.length(); i++) {
-            int char_index = 0;
-            if (Character.isUpperCase(my_string.charAt(i))) {
-                char_index = my_string.charAt(i) - 65;
-            } else {
-                char_index = my_string.charAt(i) - 71;
+        int start = 0;
+        int end = num_list.length - 1;
+        int interval = 1;
+        if (n == 1) {
+            end = slicer[1];
 
-            }
-            answer.set(char_index, answer.get(char_index) + 1);
+        } else if (n == 2) {
+            start = slicer[0];
+
+        } else if (n == 3) {
+            start = slicer[0];
+            end = slicer[1];
+
+        } else {
+            start = slicer[0];
+            end = slicer[1];
+            interval = slicer[2];
+
         }
+        for (int i = start; i <= end; i += interval) {
+            answer.add(num_list[i]);
+        }
+
         return answer;
     }
 }
@@ -28,6 +38,6 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution("Programmers"));
+        System.out.println(solution.solution(2, new int[]{1, 5, 2}, new int[]{1, 2, 3, 4, 5, 6, 7, 8, 9}));
     }
 }
