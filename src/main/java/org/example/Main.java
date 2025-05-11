@@ -5,13 +5,10 @@ import java.sql.SQLOutput;
 import java.util.*;
 
 class Solution {
-    public List<Integer> solution(int n, int k) {
+    public List<Integer> solution(int start_num, int end_num) {
         List<Integer> answer = new ArrayList<>();
-        int i = 1;
-        while (k * i <= n && k > 0) {
-            answer.add(k * i);
-            i++;
-
+        for (int i = start_num; i >= end_num; i--) {
+            answer.add(i);
         }
         return answer;
     }
@@ -21,6 +18,6 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(15, 5));
+        System.out.println(solution.solution(10, 3));
     }
 }
