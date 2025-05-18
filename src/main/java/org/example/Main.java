@@ -7,30 +7,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 class Solution {
-    public int solution(String[] strArr) {
-        int answer = 0;
-        List<Integer> length = new ArrayList<>();
-        for (int i = 0; i < strArr.length; i++) {
-            length.add(strArr[i].length());
-        }
-        length = length.stream().distinct().collect(Collectors.toList());
-        Collections.sort(length);
+    public String solution(String n_str) {
 
-        for (int i = 0; i < length.size(); i++) {
-            int count = 0;
-
-            for (int j = 0; j < strArr.length; j++) {
-
-                if (length.get(i) == strArr[j].length()) {
-                    count++;
+        if (n_str.charAt(0) == '0') {
+            for (int i = 0; i < n_str.length(); i++) {
+                if (n_str.charAt(i) == '0') {
+                    continue;
                 }
-            }
-            if (answer < count) {
-                answer = count;
+                n_str = n_str.substring(i);
+                break;
             }
         }
 
-        return answer;
+        return n_str;
     }
 }
 
@@ -38,6 +27,6 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(new String[]{"a", "bc", "d", "efg", "hi"}));
+        System.out.println(solution.solution("000150040048500"));
     }
 }
