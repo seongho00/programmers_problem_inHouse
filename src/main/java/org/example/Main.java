@@ -8,14 +8,15 @@ import java.util.List;
 import java.util.ArrayList;
 
 class Solution {
-    public int solution(int[] num_list, int n) {
+    public int solution(int a, int b) {
         int answer = 0;
-        for (int i = 0; i < num_list.length; i++) {
-            if (num_list[i] == n) {
-                return 1;
-            }
+        if (a % 2 != 0 && b % 2 != 0) {
+            return a * a + b * b;
+        } else if (a % 2 != 0 || b % 2 != 0) {
+            return 2 * (a + b);
+        } else {
+            return Math.abs(a - b);
         }
-        return 0;
     }
 }
 
@@ -23,6 +24,6 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(new int[]{1, 2, 3, 4, 5}, 3));
+        System.out.println(solution.solution(3, 5));
     }
 }
