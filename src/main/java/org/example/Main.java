@@ -8,8 +8,14 @@ import java.util.List;
 import java.util.ArrayList;
 
 class Solution {
-    public int solution(String str1, String str2) {
-        return str2.contains(str1) ? 1 : 0;
+    public String solution(String[] str_list, String ex) {
+        String answer = "";
+        for (int i = 0; i < str_list.length; i++) {
+            if (!str_list[i].contains(ex)) {
+                answer += str_list[i];
+            }
+        }
+        return answer;
     }
 }
 
@@ -17,6 +23,6 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution("banana", "ana"));
+        System.out.println(solution.solution(new String[]{"abc", "def", "ghi"}, "ef"));
     }
 }
