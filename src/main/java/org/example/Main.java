@@ -8,8 +8,8 @@ import java.util.List;
 import java.util.ArrayList;
 
 class Solution {
-    public int solution(String my_string, String target) {
-        return my_string.contains(target) ? 1 : 0;
+    public int solution(String str1, String str2) {
+        return str2.contains(str1) ? 1 : 0;
     }
 }
 
