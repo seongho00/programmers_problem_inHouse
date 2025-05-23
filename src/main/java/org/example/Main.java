@@ -7,20 +7,16 @@ import java.util.stream.Collectors;
 import java.util.List;
 import java.util.ArrayList;
 
-
 class Solution {
-    public int[][] solution(int n) {
-        int[][] answer = new int[n][n];
-        for (int i = 0; i < n; i++) {
-            for (int j = 0; j < n; j++) {
-                if (i == j) {
-                    answer[i][j] = 1;
-                } else {
-                    answer[i][j] = 0;
+    public int solution(int[][] arr) {
+        for (int i = 0; i < arr.length; i++) {
+            for (int j = 0; j < arr[i].length; j++) {
+                if (arr[i][j] != arr[j][i]) {
+                    return 0;
                 }
             }
         }
-        return answer;
+        return 1;
     }
 }
 
@@ -28,6 +24,6 @@ public class Main {
     public static void main(String[] args) {
         Solution solution = new Solution();
 
-        System.out.println(solution.solution(3));
+        System.out.println(solution.solution(new int[][]{{5, 192, 33}, {192, 72, 95}, {33, 95, 999}}));
     }
 }
